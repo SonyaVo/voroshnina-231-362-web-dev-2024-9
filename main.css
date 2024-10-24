@@ -1,0 +1,43 @@
+header {
+    background-color: black;
+    color: #ffffff;
+    padding: 20px;
+    margin: 0;
+    font-size: 1.2rem ;
+}
+
+body {
+    background-color: rgb(198, 198, 198);
+    margin-bottom: 90px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-optical-sizing: 1.2rem;
+    font-style: normal;
+}
+
+main {
+    padding: 30px;
+}
+
+
+img {
+    width: 15%;
+    height: 15%;
+    object-fit: cover;
+}
+
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    /* Фиксируем футер */
+    bottom: 0;
+    /* Фиксируем его у нижней границы экрана */
+    left: 0;
+}
