@@ -32,9 +32,13 @@
         $sum = 0;
         $count = 0;
 
+
         // Тип верстки
-        $layout_type = 'E'; // Может быть A, B, C, D, E
+        $layout_type = 'C'; // Может быть A, B, C, D, E
         
+
+
+
         // Функция для вычисления значений
         function calculate_function($x)
         {
@@ -45,7 +49,8 @@
             } elseif ($x >= 20) {
 
                 if ($x == 25) { //деление на ноль
-                    $count = -1;
+        
+
                     return 0;
                 } else {
                     return 3 / ($x - 25);
@@ -64,25 +69,33 @@
                 for ($x = $x_start; $x <= $x_max; $x += $step) {
                     $y = calculate_function($x);
 
-                    echo "f($x)=" . round($y, 3) . "<br>";
+                    if ($x != 25) {
+                        echo "f($x)=" . round($y, 3) . "<br>";
+                        $min_value = min($min_value, $y);
+                        $max_value = max($max_value, $y);
+                        $sum += $y;
+                        $count++;
+                    } else {
+                        echo "f($x)= error <br>";
 
-                    $min_value = min($min_value, $y);
-                    $max_value = max($max_value, $y);
-                    $sum += $y;
-                    $count++;
+                    }
+
                 }
                 break;
             case 'B':
                 echo "<ul>";
                 for ($x = $x_start; $x <= $x_max; $x += $step) {
                     $y = calculate_function($x);
+                    if ($x != 25) {
+                        echo "<li> f($x)=" . round($y, 3) . "</li><br>";                        $min_value = min($min_value, $y);
+                        $max_value = max($max_value, $y);
+                        $sum += $y;
+                        $count++;
+                    } else {
+                        echo "<li> f($x)= error <br></li>";
 
-                    echo "<li>f($x)=" . round($y, 3) . "</li>";
+                    }
 
-                    $min_value = min($min_value, $y);
-                    $max_value = max($max_value, $y);
-                    $sum += $y;
-                    $count++;
                 }
                 echo "</ul>";
                 break;
@@ -91,12 +104,17 @@
                 for ($x = $x_start; $x <= $x_max; $x += $step) {
 
                     $y = calculate_function($x);
+                    if ($x != 25) {
+                        echo "<li> f($x)=" . round($y, 3) . "</li><br>";
+                        $min_value = min($min_value, $y);
+                        $max_value = max($max_value, $y);
+                        $sum += $y;
+                        $count++;
+                    } else {
+                        echo "<li> f($x)= error <br></li>";
 
-                    echo "<li>f($x)=" . round($y, 3) . "</li>";
-                    $min_value = min($min_value, $y);
-                    $max_value = max($max_value, $y);
-                    $sum += $y;
-                    $count++;
+                    }
+
                 }
                 echo "</ol>";
                 break;
@@ -106,13 +124,18 @@
                 for ($x = $x_start; $x <= $x_max; $x += $step) {
                     $y = calculate_function($x);
 
-                    echo "<tr><td>$row</td><td>$x</td><td>" . round($y, 3) . "</td></tr>";
+                    if ($x != 25) {
+                        echo "f($x)=" . round($y, 3) . "<br>";
+                        $min_value = min($min_value, $y);
+                        $max_value = max($max_value, $y);
+                        $sum += $y;
+                        $count++;
+                        $row++;
+                    } else {
+                        echo "f($x)= error <br>";
 
-                    $min_value = min($min_value, $y);
-                    $max_value = max($max_value, $y);
-                    $sum += $y;
-                    $count++;
-                    $row++;
+                    }
+
                 }
                 echo "</table>";
                 break;
@@ -120,12 +143,17 @@
                 for ($x = $x_start; $x <= $x_max; $x += $step) {
                     $y = calculate_function($x);
 
-                    echo "<div style='display:inline-block; border: 2px solid red; margin: 8px;'>f($x)=" . round($y, 3) . "</div>";
+                    if ($x != 25) {
+                        echo "f($x)=" . round($y, 3) . "<br>";
+                        $min_value = min($min_value, $y);
+                        $max_value = max($max_value, $y);
+                        $sum += $y;
+                        $count++;
+                    } else {
+                        echo "f($x)= error <br>";
 
-                    $min_value = min($min_value, $y);
-                    $max_value = max($max_value, $y);
-                    $sum += $y;
-                    $count++;
+                    }
+
                 }
                 break;
         }
@@ -139,7 +167,26 @@
         ?>
     </main>
     <footer>
-        <p>Тип верстки: <?php echo $layout_type; ?></p>
+        <?php
+        switch ($layout_type) {
+            case 'A':
+                echo "<p>Тип верстки: Простая верстка текстом, без таблиц и блоков</p>";
+                break;
+            case 'B':
+                echo "<p>Тип верстки: Маркированный список</p>";
+                break;
+            case 'C':
+                echo "<p>Тип верстки: Нумерованный список</p>";
+                break;
+            case 'D':
+                echo "<p>Тип верстки: Табличная верстка</p>";
+                break;
+            case 'E':
+                echo "<p>Тип верстки: Блочная верстка</p>";
+                break;
+        }
+        ?>
+
     </footer>
 </body>
 
